@@ -11,11 +11,25 @@
 			"name": "Comment",
 			"scope": [
 				"comment",
-				"punctuation.comment"
+				"punctuation.comment",
+				"punctuation.comment.open",
+				"punctuation.comment.close"
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#01f7706b"
+				"foreground": "#8af74b60"
+			}
+		},
+		{
+			"name": "String",
+			"scope": [
+				"comment.block",
+				"comment.block.open",
+				"comment.block.close"
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#8af74b60"
 			}
 		},
 		{
@@ -44,7 +58,7 @@
 				"PseudoAddress.inst"
 			],
 			"settings": {
-				"foreground": "#e6ff09f6",
+				"foreground": "#09f7ff",
 				"fontStyle": "bold"
 			}
 		},
@@ -76,6 +90,15 @@
 			],
 			"settings": {
 				"foreground": "#07b0ff"
+			}
+		},
+		{
+			"name": "Keyword, Storage",
+			"scope": [
+				"keyword.wasm"
+			],
+			"settings": {
+				"foreground": "#cc76fd"
 			}
 		},
 		{
@@ -147,7 +170,7 @@
 				"imme.dex"
 			],
 			"settings": {
-				"foreground": "#FF0000",
+				"foreground": "#edf10a",
 				"fontStyle": "bold"
 			}
 		},

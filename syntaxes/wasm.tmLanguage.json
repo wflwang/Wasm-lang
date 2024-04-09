@@ -3,19 +3,17 @@
 	"name": "wasm",
 	"scopeName": "source.wasm",
 	"patterns": [
-		{
-			"include": "#strings"
-		},
-		{
-			"include":	"#commentsAll"
-		},
-		{ 	"match": "(;(.)*|//(.)*)",
+		{ 	"match": "(;(.)*|//(.)*|/\\*[\\s\\S]*\\*/)",
 			"name": "comment.line",
 			"comment": "Comment"
 		},
-		{ 	"match": "\\b(iost|IOST|iostr|IOSTR|sfun|SFUN|sfunr|SFUNR|eni|ENI|disi|DISI|sleep|SLEEP|T0MD|t0md|addar|ADDAR|addia|ADDIA|andar|ANDAR|andia|ANDIA|subar|SUBAR|subia|SUBIA|ioria|IORIA|iorar|IORAR|clrr|CLRR|comr|COMR|movia|MOVIA|movr|MOVR|movar|MOVAR|ret|RET|lgoto|LGOTO|lcall|LCALL|btrss|BTRSS|btrsc|BTRSC|bsr|BSR|bcr|BCR|retia|RETIA|retie|RETIE|decrsz|DECRSZ|incrsz|INCRSZ|decr|DECR|incr|INCR|xoria|XORIA|xorar|XORAR|rlr|RLR|rrr|RRR|nop|NOP)(.[b|w|v])?\\b",
+		{ 	"match": "\\b(clrwdt|CLRWDT|clra|CLRA|iost|IOST|iostr|IOSTR|tfun|TFUN|tfunr|TFUNR|sfun|SFUN|sfunr|SFUNR|eni|ENI|disi|DISI|sleep|SLEEP|T0MD|t0md|addar|ADDAR|addia|ADDIA|andar|ANDAR|andia|ANDIA|subar|SUBAR|sbcar|subia|SUBIA|ioria|IORIA|iorar|IORAR|clrr|CLRR|comr|COMR|movia|MOVIA|movr|MOVR|movar|MOVAR|ret|RET|lgoto|LGOTO|lcall|LCALL|btrss|BTRSS|btrsc|BTRSC|bsr|BSR|bcr|BCR|retia|RETIA|retie|RETIE|decrsz|DECRSZ|incrsz|INCRSZ|decr|DECR|incr|INCR|xoria|XORIA|xorar|XORAR|rlr|RLR|rrr|RRR|nop|NOP)(.[b|w|v])?\\b",
 			"name": "keyword.mnemonic",
 			"comment": "MnemonicsNY"
+	  	},
+		{ 	"match": "\\b(rjp|jp|adar|ADAR|adai|ADAI|andai|ANDAI|orai|ORAI|orar|ORAR|mvai|MVAI|mvar|MVAR|mvra|MVRA|b1j|b0j|bs|bc|decrrjp|DECRRJP|incrrjp|INCRRJP|decrr|DECRR|incrr|INCRR|xai|XAI|xar|XRA)(.[b|w|v])?\\b",
+			"name": "keyword.wasm",
+			"comment": "MnemonicsNY1"
 	  	},
 		{ 	"match": "\\b(assume|base|cleartable|db|dd|dl|dw|endmacro|export|fill|fillbyte|fsave|header|hirom|import|incbin|incbin_table|incsrc|loadpc|lorom|macro name|namespace|org|pad|padbyte|print|savepc|skip|table|warnpc|ASSUME|BASE|CLEARTABLE|DB|DD|DL|DW|ENDMACRO|EXPORT|FILL|FILLBYTE|FSAVE|HEADER|HIROM|IMPORT|INCBIN|INCBIN_TABLE|INCSRC|LOADPC|LOROM|MACRO NAME|NAMESPACE|ORG|PAD|PADBYTE|PRINT|SAVEPC|SKIP|TABLE|WARNPC)\\b",
 		  	"name": "keyword.asm",
@@ -33,17 +31,21 @@
 			"name": "constant.numeric.asm",
 			"comment": "Value"
 	  	},
-		{ 	"match": "^[\\s]*(if|#if|ifdef|#ifdef|ifndef|#ifndef|#else|else|endif|#endif|#switch|switch|endsw|#endsw|endw|#endw|#define)",
+		{ 	"match": "^[\\s]*([\\#]*\\b(local|while|if|ifdef|ifndef|else|endif|switch|endsw|endw|error|case|default|break|end|cblock|endc)\\b|#define|#include|^[\\s]*(?:[a-zA-Z0-9_@]+[\\s]+)(equ)(?:[\\s]+[a-zA-Z0-9_@]+))",
 			"name": "Pseudo.inst.asm",
 			"comment": "inst"
 	  	},
 		{ 	"match": "^[\\s]*(org|ORG)",
 			"name": "PseudoAddress.inst.asm",
-			"comment": "inst"
+			"comment": "inst1"
 	  	},
 		{ 	"match": "[\\s]+[0-9\\\\]*$|([\\s]+(0x)[0-9a-fA-F\\\\]+$|[\\s]+[0-9\\\\]*(h|H)$)",
 		  	"name": "imme.dex",
 		  	"comment": "Value"
+		},
+		{
+			"match":"^[\\s]*(^[\\s]*(?:[a-zA-Z0-9_@]+[\\s]+)(macro)|endm|#endm)",
+			"name": "keyword.control"
 		},
 		{ 	"match": "\"[^\"]*\"",
 			"name": "string.quoted.double",
@@ -53,26 +55,29 @@
 			"name": "string.quoted.single",
 			"comment": "String"
 	  	},
+		{
+			"include": "#CommentBlocks"
+		},
 		{ 	"match": "\\b(adra|adar|adrac|adarc|adai|addar|adcar|andar|andra|andai|andia|asl|bcc|bcs|beq|bit|bmi|bne|bpl|bra|brk|brl|bvc|bvs|clc|cld|cli|clv|cmp|cpx|cpy|cop|dc|dec|dex|dey|eor|inc|inx|iny|jmp|jml|jsr|jsl|lda|ldx|ldy|lsr|mvn|mvp|nop|ora|pea|pei|per|pha|phb|phd|phk|php|phx|phy|pla|plb|pld|plp|plx|ply|rep|rol|ror|rti|rts|rtl|sbc|sec|sed|sei|sep|sta|stx|sty|stp|stz|tax|tay|tcd|tcs|tdc|tdc|tdx|txa|txs|txy|tya|tyx|trb|tsb|wai|wdm|xba|xce|ADC|AND|ASL|BCC|BCS|BEQ|BIT|BMI|BNE|BPL|BRA|BRK|BRL|BVC|BVS|CLC|CLD|CLI|CLV|CMP|CPX|CPY|COP|DC|DEC|DEX|DEY|EOR|INC|INX|INY|JMP|JML|JSR|JSL|LDA|LDX|LDY|LSR|MVN|MVP|NOP|ORA|PEA|PEI|PER|PHA|PHB|PHD|PHK|PHP|PHX|PHY|PLA|PLB|PLD|PLP|PLX|PLY|REP|ROL|ROR|RTI|RTS|RTL|SBC|SEC|SED|SEI|SEP|STA|STX|STY|STP|STZ|TAX|TAY|TCD|TCS|TDC|TDC|TDX|TXA|TXS|TXY|TYA|TYX|TRB|TSB|WAI|WDM|XBA|XCE)(.[b|w|v])?\\b",
 			"name": "keyword.mnemonic",
 			"comment": "Mnemonics"
 	  	}
 	],
 	"repository": {
-		"commentsAll":{
-			"name": "punctuation.comment",
-			"begin": "\\b(/*)\\b",
-			"end": "\\b(*/)\\b",
+		"CommentBlocks":{
+			"name": "comment.block",
+			"begin": "\\/\\*",
+			"end": "[\\s\\S]*\\*\\/",
 			"beginCaptures": {
 				"0": {
-				  "name": "punctuation.comment.open"
+				  "name": "comment.block.open"
 				}
-			},
-			"endCaptures": {
+			  },
+			  "endCaptures": {
 				"0": {
-				"name": "punctuation.comment.close"
+				  "name": "comment.block.close"
 				}
-			}
+			  }
 		},
 		"strings": {
 			"name": "string.quoted.double.wasm",
