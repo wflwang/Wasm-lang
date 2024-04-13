@@ -167,7 +167,8 @@
 		{
 			"name": "imme",
 			"scope":[
-				"imme.dex"
+				"imme.dex",
+				"imme.dex1"
 			],
 			"settings": {
 				"foreground": "#edf10a",

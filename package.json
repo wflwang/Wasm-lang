@@ -2,7 +2,10 @@
   "name": "Wasm-lang",
   "displayName": "Wasm-lang",
   "description": "W-M assembly language support",
+  "author":"MaxwellWang",
   "version": "0.0.1",
+  "icon": "./icon/wasm-lang1.png",
+  "private":"true",
   "engines": {
     "vscode": "^1.88.0"
   },
@@ -10,6 +13,10 @@
     "Programming Languages",
     "Themes"
   ],
+  "repository": {  
+    "type": "git",  
+    "url": "https://github.com/wflwang/Wasm-lang"  
+  },  
   "contributes": {
     "languages": [{
       "id": "wasm",

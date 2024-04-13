@@ -4,10 +4,10 @@
 	"scopeName": "source.wasm",
 	"patterns": [
 		{ 	"match": "(;(.)*|//(.)*|/\\*[\\s\\S]*\\*/)",
-			"name": "comment.line",
+			"name": "punctuation.comment",
 			"comment": "Comment"
 		},
-		{ 	"match": "\\b(clrwdt|CLRWDT|clra|CLRA|iost|IOST|iostr|IOSTR|tfun|TFUN|tfunr|TFUNR|sfun|SFUN|sfunr|SFUNR|eni|ENI|disi|DISI|sleep|SLEEP|T0MD|t0md|addar|ADDAR|addia|ADDIA|andar|ANDAR|andia|ANDIA|subar|SUBAR|sbcar|subia|SUBIA|ioria|IORIA|iorar|IORAR|clrr|CLRR|comr|COMR|movia|MOVIA|movr|MOVR|movar|MOVAR|ret|RET|lgoto|LGOTO|lcall|LCALL|btrss|BTRSS|btrsc|BTRSC|bsr|BSR|bcr|BCR|retia|RETIA|retie|RETIE|decrsz|DECRSZ|incrsz|INCRSZ|decr|DECR|incr|INCR|xoria|XORIA|xorar|XORAR|rlr|RLR|rrr|RRR|nop|NOP)(.[b|w|v])?\\b",
+		{ 	"match": "\\b(swapr|SWAPR|clrwdt|CLRWDT|clra|CLRA|iost|IOST|iostr|IOSTR|tfun|TFUN|tfunr|TFUNR|sfun|SFUN|sfunr|SFUNR|eni|ENI|disi|DISI|sleep|SLEEP|T0MD|t0md|addar|ADDAR|addia|ADDIA|andar|ANDAR|andia|ANDIA|subar|SUBAR|sbcar|subia|SUBIA|ioria|IORIA|iorar|IORAR|clrr|CLRR|comr|COMR|movia|MOVIA|movr|MOVR|movar|MOVAR|ret|RET|lgoto|LGOTO|lcall|LCALL|btrss|BTRSS|btrsc|BTRSC|bsr|BSR|bcr|BCR|retia|RETIA|retie|RETIE|decrsz|DECRSZ|incrsz|INCRSZ|decr|DECR|incr|INCR|xoria|XORIA|xorar|XORAR|rlr|RLR|rrr|RRR|nop|NOP)(.[b|w|v])?\\b",
 			"name": "keyword.mnemonic",
 			"comment": "MnemonicsNY"
 	  	},
@@ -28,20 +28,24 @@
 		  	"comment": "Registers"
 		},
 		{ 	"match": "[\\?[$|%]|$|\\\\][a-zA-Z0-9_:\\\\]*",
-			"name": "constant.numeric.asm",
+			"name": "constant.numeric",
 			"comment": "Value"
 	  	},
 		{ 	"match": "^[\\s]*([\\#]*\\b(local|while|if|ifdef|ifndef|else|endif|switch|endsw|endw|error|case|default|break|end|cblock|endc)\\b|#define|#include|^[\\s]*(?:[a-zA-Z0-9_@]+[\\s]+)(equ)(?:[\\s]+[a-zA-Z0-9_@]+))",
-			"name": "Pseudo.inst.asm",
+			"name": "Pseudo.inst",
 			"comment": "inst"
 	  	},
 		{ 	"match": "^[\\s]*(org|ORG)",
 			"name": "PseudoAddress.inst.asm",
 			"comment": "inst1"
 	  	},
-		{ 	"match": "[\\s]+[0-9\\\\]*$|([\\s]+(0x)[0-9a-fA-F\\\\]+$|[\\s]+[0-9\\\\]*(h|H)$)",
-		  	"name": "imme.dex",
-		  	"comment": "Value"
+		{ 	"match": "[\\s]+[0-9\\\\]+[^x][\\s]*",
+		  	"name": "imme.dex1",
+		  	"comment": "Value1"
+		},
+		{ 	"match": "([\\s]+(0x)[0-9a-fA-F\\\\]+[\\s]*)|([\\s]+[0-9\\\\]+(h|H)[\\s]*)",
+		  	"name": "imme.dex1",
+		  	"comment": "Value2"
 		},
 		{
 			"match":"^[\\s]*(^[\\s]*(?:[a-zA-Z0-9_@]+[\\s]+)(macro)|endm|#endm)",
