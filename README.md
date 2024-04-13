@@ -5,7 +5,8 @@
     RSIC MCU（Reduced Instruction Set Computing Microcontroller Unit）Assembly language highlighting
 
     After installation is complete, click on set color theme
-    <img src="https://gitee.com/wflwang/Wasm-lang/raw/master/icon/setting.png" alt="设置图标">
+    
+<img src="https://gitee.com/wflwang/Wasm-lang/raw/master/icon/setting.png" alt="设置图标">
 
 
 
