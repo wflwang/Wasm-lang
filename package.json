@@ -1,9 +1,9 @@
 {
-  "name": "Wasm-lang",
+  "name": "wasm-lang",
   "displayName": "Wasm-lang",
   "description": "W-M assembly language support",
   "author":"MaxwellWang",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "./icon/wasm-lang1.png",
   "private":"true",
   "engines": {
