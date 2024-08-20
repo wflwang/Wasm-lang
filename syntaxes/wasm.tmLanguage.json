@@ -31,7 +31,7 @@
 			"name": "constant.numeric",
 			"comment": "Value"
 	  	},
-		{ 	"match": "^[\\s]*([\\#]*\\b(local|while|if|ifdef|ifndef|else|endif|switch|endsw|endw|error|case|default|break|end|cblock|endc)\\b|#define|#include|[\\s]*(?:[a-zA-Z0-9_@]+[\\s]+)(equ)(?=[\\s]+[a-zA-Z0-9_@]+))",
+		{ 	"match": "^[\\s]*([\\#]*\\b(local|while|if|ifdef|ifndef|else|endif|switch|endsw|endw|error|case|default|break|end|cblock|endc|for|endfor|messg|variable|constant)\\b|#define|#include|[\\s]*(?:[a-zA-Z0-9_@]+[\\s]+)(equ)(?=[\\s]+[a-zA-Z0-9_@]+))",
 			"name": "Pseudo.inst",
 			"comment": "inst"
 	  	},
